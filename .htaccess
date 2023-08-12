@@ -1,0 +1,122 @@
+RewriteEngine On
+RewriteBase /
+
+#order deny,allow
+#deny from all
+#allow from 14.162.144.184
+#allow from 118.70.126.231
+#allow from 27.3.179.20
+#allow from 123.24.206.25
+#allow from 43.239.223.157
+#allow from 43.239.223.187
+#allow from 43.239.223.60
+#allow from 210.245.75.51
+#allow from 14.248.82.205
+#allow from 118.70.126.138
+#allow from 14.232.208.241
+#allow from 123.24.142.145
+
+
+RewriteRule ^$ /home/index.php
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+<IfModule mod_rewrite.c>
+    #RewriteEngine On
+    #RewriteCond %{HTTPS} off
+    #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    #RewriteCond %{HTTP_HOST} www\.(.+)$ [NC]
+    #RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+#Hướng dẫn
+RewriteRule ^huong_dan.html?$ /home/huongdan.php
+
+#Trang chu sau dang nhap
+RewriteRule ^trang_chu_sau_dang_nhap.html?$ /home/trangchu_sdn.php
+
+#Quản lý tiêu chí
+RewriteRule ^quan_ly_tieu_chi_danh_gia.html?$ /home/ql_tieuchi_danhgia.php
+RewriteRule ^quan_ly_tieu_chi_danh_gia_them_moi.html?$ /home/ql_tieuchi_danhgia_themmoi.php
+RewriteRule ^quan_ly_tieu_chi_danh_gia_chinh_sua_([0-9]+).html?$ /home/ql_tieuchi_danhgia_chinhsua.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^quan_ly_tieu_chi_danh_gia_chi_tiet_([0-9]+).html?$ /home/ql_tieuchi_danhgia_chitiet.php?id=$1&%{QUERY_STRING} [NE,L]
+
+RewriteRule ^quan_ly_tieu_chi_nang_luc.html?$ /home/ql_tieuchi_nangluc.php
+RewriteRule ^quan_ly_tieu_chi_nang_luc_them_moi.html?$ /home/ql_tieuchi_nangluc_themmoi.php
+RewriteRule ^quan_ly_tieu_chi_nang_luc_chinh_sua_([0-9]+).html?$ /home/ql_tieuchi_nangluc_chinhsua.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^quan_ly_tieu_chi_nang_luc_chi_tiet_([0-9]+).html?$ /home/ql_tieuchi_nangluc_chitiet.php?id=$1&%{QUERY_STRING} [NE,L]
+
+#Quản lý đề kiểm tra năng lực
+RewriteRule ^loai-cau-hoi.html?$ /home/loaicauhoi.php
+
+RewriteRule ^danh-sach-cau-hoi.html?$ /home/danhsachcauhoi.php
+RewriteRule ^them-moi-cau-hoi.html?$ /home/ql_de_kiemtra_themmoi.php
+RewriteRule ^cau-hoi-chi-tiet-([0-9]+).html?$ /home/ql_de_kiemtra_chitiet.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^chinh-sua-cau-hoi-([0-9]+).html?$ /home/ql_de_kiemtra_chinhsua.php?id=$1&%{QUERY_STRING} [NE,L]
+
+RewriteRule ^de-kiem-tra.html?$ /home/ql_de_kiemtra.php
+RewriteRule ^them-moi-de-kiem-tra.html?$ /home/ql_de_kiemtra_themmoi_real.php
+RewriteRule ^chi-tiet-de-kiem-tra-([0-9]+).html?$ /home/ql_de_kiemtra_chitiet_real.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^chinh-sua-de-kiem-tra-([0-9]+).html?$ /home/ql_de_kiemtra_chinhsua_real.php?id=$1&%{QUERY_STRING} [NE,L]
+
+
+#Quản lý kế hoạch đánh giá
+RewriteRule ^quan_ly_ke_hoach_danh_gia.html?$ /home/ql_kehoach_danhgia.php
+RewriteRule ^quan_ly_ke_hoach_danh_gia_chi_tiet_([0-9]+).html?$ /home/ql_kehoach_danhgia_chitiet.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^quan_ly_ke_hoach_danh_gia_chinh_sua_([0-9]+).html?$ /home/ql_kehoach_danhgia_chinhsua.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^quan_ly_ke_hoach_danh_gia_them_moi.html?$ /home/ql_kehoach_danhgia_themmoi.php
+
+
+
+#Trang phieu danh gia
+RewriteRule ^quanly-phieudanhgia.html?$ /home/ql_phieudanhgia.php
+
+RewriteRule ^quanly-phieudanhgia-danhgia-nv-([0-9]+).html?$ /home/ql_phieudanhgia_hoanthanh_nv.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^phieudanhgia-de-kiemtra-nv-([0-9]+).html?$ /home/ql_phieudanhgia_de_kiemtra_nv.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^phieudanhgia-lambai-([0-9]+).html?$ /home/ql_phieudanhgia_lambai.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^phieudanhgia-chamdiem-u([0-9]+)-p([0-9]+).html?$ /home/ql_phieudanhgia_chamdiem.php?id=$1&id_p=$2&%{QUERY_STRING} [NE,L]
+
+
+#Trang xoa gan day
+RewriteRule ^xoaganday-de-danh-gia.html?$ /home/xoaganday_dedanhgia.php
+RewriteRule ^xoaganday-de-kiem-tra.html?$ /home/xoaganday_dekiemtra.php
+RewriteRule ^xoaganday-phieu-danh-gia.html?$ /home/xoaganday_phieudanhgia.php
+RewriteRule ^xoaganday-tieuchi-danh-gia.html?$ /home/xoaganday_tieuchidanhgia.php
+RewriteRule ^xoaganday-kehoach-danh-gia.html?$ /home/xoaganday_kehoachdanhgia.php
+RewriteRule ^xoaganday-dulieuxoaganday.html?$ /home/xoaganday_dulieuxoaganday.php
+
+
+#Trang phanquyen
+RewriteRule ^phan-quyen.html?$ /home/phanquyen_phanquyen.php
+RewriteRule ^phanquyen_chitiet_([0-9]+).html?$ /home/phanquyen_phanquyenchitiet.php?id=$1&%{QUERY_STRING} [NE,L]
+
+#Trang cai dat
+RewriteRule ^caidat_caidatchung.html?$ /home/caidat_caidatchung.php
+RewriteRule ^caidat_nhatkyhoatdong.html?$ /home/caidat_nhatkyhoatdong.php
+RewriteRule ^caidat_thangdiem.html?$ /home/caidat_thangdiem.php
+RewriteRule ^caidat_thongtinbaomat.html?$ /home/caidat_thongtinbaomat.php
+
+#Trang lo trinh thnag tien
+RewriteRule ^lotrinhthangtien.html?$ /home/lotrinhthangtien.php
+RewriteRule ^lotrinhthangtien-chitiet-([0-9]+).html?$ /home/lotrinhthangtien_chitiet.php?id=$1&%{QUERY_STRING} [NE,L]
+
+#Trang ket qua danh gia
+RewriteRule ^ketquadanhgia-nhanvien.html?$ /home/ketquadanhgia_nhanvien.php
+RewriteRule ^ketquadanhgia-cuatoi.html?$ /home/ketquadanhgia_cuatoi.php
+RewriteRule ^ketquadanhgia-nhanvien-u([0-9]+)-p([0-9]+).html?$ /home/ketquadanhgia_nhanvien_chitiet_1n.php?id=$1&id_p=$2&%{QUERY_STRING} [NE,L]
+RewriteRule ^ketquadanhgia-phieudanhgia-([0-9]+).html?$ /home/ketquadanhgia_phieudanhgia_chitiet_nn.php?id=$1&%{QUERY_STRING} [NE,L]
+RewriteRule ^ketquadanhgia-phongban.html?$ /home/ketquadanhgia_phongban.php
+RewriteRule ^ketquadanhgia-phongban-chitiet-u([0-9]+)-p([0-9]+).html?$ /home/ketquadanhgia_phongban_chitiet.php?id=$1&id_p=$2&%{QUERY_STRING} [NE,L]
+RewriteRule ^ketquadanhgia-phongban-chitiet-maphieu-([0-9]+).html?$ /home/ketquadanhgia_phongban_chitiet_maphieu.php?id=$1&%{QUERY_STRING} [NE,L]
+
+
+#Chuyển đổi số 365
+
+
+
+RewriteRule ^danh-sach-chi-tiet-loai-([0-9]+).html?$ /home/danhsachtaisan/danhsachtaisan2.php?idloai=$1&%{QUERY_STRING} [NE,L]
+
+
+#Trang đăng xuất
+RewriteRule ^dang-xuat.html?$ /home/dangxuat.php
